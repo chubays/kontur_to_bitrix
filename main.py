@@ -6,7 +6,7 @@ import traceback
 from PyQt6 import QtGui
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QMainWindow, QLabel, QCheckBox,
-                             QFileDialog, QApplication, QPushButton, QWidget, QVBoxLayout, QLineEdit, QComboBox)
+                             QFileDialog, QApplication, QPushButton, QWidget, QVBoxLayout, QComboBox)
 import sys
 
 df = pd.DataFrame()
@@ -56,6 +56,7 @@ def convert(sfera_, create_deal):
     if create_deal:
         set_create_deal()
 
+
 def set_create_deal():
     correct_df['Создать сделку по новой воронке'] = 'Да'
 
@@ -66,9 +67,9 @@ class Example(QMainWindow):
         super().__init__()
 
         self.generalLayout = QVBoxLayout()
-        centralWidget = QWidget(self)
-        centralWidget.setLayout(self.generalLayout)
-        self.setCentralWidget(centralWidget)
+        central_widget = QWidget(self)
+        central_widget.setLayout(self.generalLayout)
+        self.setCentralWidget(central_widget)
 
         self.btn = QPushButton(self)
         self.btn.setText("Выбрать файл")
@@ -82,11 +83,6 @@ class Example(QMainWindow):
         self.text_label.setFixedHeight(30)
         self.text_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.generalLayout.addWidget(self.text_label)
-
-        # self.sfera = QLineEdit()
-        # self.sfera.setAlignment(Qt.AlignmentFlag.AlignLeft)
-        # self.sfera.setFixedHeight(30)
-        # self.generalLayout.addWidget(self.sfera)
 
         self.sf = QComboBox()
         self.sf.addItem('')
@@ -152,7 +148,6 @@ class Example(QMainWindow):
             global df
             df = pd.read_csv(fname[0], sep=';')
             self.btn2.setDisabled(False)
-
 
 
 def main():
