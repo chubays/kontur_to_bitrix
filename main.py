@@ -6,7 +6,7 @@ import traceback
 from PyQt6 import QtGui
 from PyQt6.QtCore import Qt
 from PyQt6.QtWidgets import (QMainWindow, QLabel, QCheckBox,
-                             QFileDialog, QApplication, QPushButton, QWidget, QVBoxLayout, QLineEdit)
+                             QFileDialog, QApplication, QPushButton, QWidget, QVBoxLayout, QLineEdit, QComboBox)
 import sys
 
 df = pd.DataFrame()
@@ -62,7 +62,7 @@ def set_create_deal():
 
 class Example(QMainWindow):
 
-    def __init__(self):
+    def __init__(self, spheres):
         super().__init__()
 
         self.generalLayout = QVBoxLayout()
@@ -83,10 +83,15 @@ class Example(QMainWindow):
         self.text_label.setAlignment(Qt.AlignmentFlag.AlignLeft)
         self.generalLayout.addWidget(self.text_label)
 
-        self.sfera = QLineEdit()
-        self.sfera.setAlignment(Qt.AlignmentFlag.AlignLeft)
-        self.sfera.setFixedHeight(30)
-        self.generalLayout.addWidget(self.sfera)
+        # self.sfera = QLineEdit()
+        # self.sfera.setAlignment(Qt.AlignmentFlag.AlignLeft)
+        # self.sfera.setFixedHeight(30)
+        # self.generalLayout.addWidget(self.sfera)
+
+        self.sf = QComboBox()
+        self.sf.addItem('')
+        self.sf.addItems([sphere for sphere in spheres])
+        self.generalLayout.addWidget(self.sf)
 
         self.make_deal = QCheckBox()
         self.make_deal.setText("Создать сделку в новой воронке?")
@@ -113,8 +118,9 @@ class Example(QMainWindow):
         self.show()
 
     def convert_file(self):
-        if self.sfera.text():
-            convert(self.sfera.text(), self.make_deal.isChecked())
+        # if self.sfera.text():
+        if self.sf.currentIndex():
+            convert(self.sf.currentText(), self.make_deal.isChecked())
             self.status_label.setText("Файл обработан")
             s_fname = QFileDialog.getSaveFileName(
                 self,
@@ -151,7 +157,10 @@ class Example(QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    Example()
+    with open('sphere.txt', 'r', encoding='UTF-8') as f:
+        nums = f.read().splitlines()
+    nums.sort()
+    Example(nums)
     sys.exit(app.exec())
 
 
