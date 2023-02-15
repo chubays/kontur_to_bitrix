@@ -50,7 +50,7 @@ def convert(sfera_, create_deal):
     except Exception as e:
         print('Ошибка:\n', e)
         print('Ошибка:\n', traceback.format_exc())
-    correct_df['Полученные лицензии'] = df['Полученные лицензии'].str.replace(';', ',')
+    correct_df['Лицензия'] = df['Полученные лицензии'].str.replace(';', ',')
     correct_df['Дата регистрации компании'] = df['Реквизит (Россия): Дата государственной регистрации']
     #    correct_df['Полученные лицензии'].replace(';', ',', inplace=True)
     if create_deal:
@@ -110,7 +110,7 @@ class Example(QMainWindow):
         self.generalLayout.addWidget(self.status_label)
 
         self.setGeometry(200, 200, 320, 250)
-        self.setWindowTitle('Конвертация файла v26012023')
+        self.setWindowTitle('Конвертация файла v15022023')
         self.show()
 
     def convert_file(self):
@@ -146,9 +146,13 @@ class Example(QMainWindow):
         )
         if fname[0]:
             global df
-            df = pd.read_csv(fname[0], sep=';')
-            self.btn2.setDisabled(False)
-
+            try:
+                df = pd.read_csv(fname[0], sep=';', encoding='windows-1251')
+                self.btn2.setDisabled(False)
+            except Exception as ex:
+                self.status_label.setText("Ошибка при считывании файла")
+                print('Ошибка:\n', ex)
+                print('Ошибка:\n', traceback.format_exc())
 
 def main():
     app = QApplication(sys.argv)
