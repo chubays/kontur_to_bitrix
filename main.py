@@ -12,7 +12,7 @@ import sys
 df = pd.DataFrame()
 correct_df = pd.DataFrame()
 FILE_NAME = ""
-
+VERSION = 'Конвертация файла v14032023'
 
 def convert(sfera_, create_deal):
     correct_df['Название компании'] = df['Реквизит (Россия): Сокращенное наименование организации']
@@ -110,7 +110,7 @@ class Example(QMainWindow):
         self.generalLayout.addWidget(self.status_label)
 
         self.setGeometry(200, 200, 320, 250)
-        self.setWindowTitle('Конвертация файла v15022023')
+        self.setWindowTitle(VERSION)
         self.show()
 
     def convert_file(self):
@@ -150,9 +150,17 @@ class Example(QMainWindow):
                 df = pd.read_csv(fname[0], sep=';', encoding='windows-1251')
                 self.btn2.setDisabled(False)
             except Exception as ex:
-                self.status_label.setText("Ошибка при считывании файла")
+#               self.status_label.setText("Ошибка при считывании файла")
                 print('Ошибка:\n', ex)
                 print('Ошибка:\n', traceback.format_exc())
+                try:
+                    df = pd.read_csv(fname[0], sep=';', encoding='utf-8')
+                    self.btn2.setDisabled(False)
+                except Exception as ex1:
+                    self.status_label.setText("Ошибка при считывании файла")
+                    print('Ошибка:\n', ex1)
+                    print('Ошибка:\n', traceback.format_exc())
+
 
 def main():
     app = QApplication(sys.argv)
