@@ -12,37 +12,138 @@ import sys
 df = pd.DataFrame()
 correct_df = pd.DataFrame()
 FILE_NAME = ""
-VERSION = 'Конвертация файла v14032023'
+VERSION = 'Конвертация файла v15032023'
+
 
 def convert(sfera_, create_deal):
-    correct_df['Название компании'] = df['Реквизит (Россия): Сокращенное наименование организации']
-    correct_df['Реквизит (Россия): ИНН'] = df['Реквизит (Россия): ИНН']
-    correct_df['Реквизит (Россия): КПП'] = df['Реквизит (Россия): КПП']
-    correct_df['Реквизит (Россия): ОГРН'] = df['Реквизит (Россия): ОГРН']
-    correct_df['Реквизит (Россия): ОГРНИП'] = df['Реквизит (Россия): ОГРНИП']
-    correct_df['Должность руководителя'] = df['Должность']
-    correct_df['Рабочий телефон'] = df['Рабочий телефон']
-    correct_df['Рабочий e-mail'] = df['Рабочий e-mail']
-    correct_df['Реквизит (Россия): Адрес'] = df['Реквизит (Россия): Адрес']
-    correct_df['Реквизит (Россия): Адрес - улица, номер дома'] = df['Реквизит (Россия): Адрес - улица, номер дома']
-    correct_df['Реквизит (Россия): Адрес - населенный пункт'] = df['Реквизит (Россия): Адрес - населенный пункт']
-    correct_df['Реквизит (Россия): Адрес - район'] = df['Реквизит (Россия): Адрес - район']
-    correct_df['Реквизит (Россия): Адрес - регион'] = df['Реквизит (Россия): Адрес - регион']
-    correct_df['Реквизит (Россия): Адрес - почтовый индекс'] = df['Реквизит (Россия): Адрес - почтовый индекс']
-    correct_df['Реквизит (Россия): Адрес - страна'] = df['Реквизит (Россия): Адрес - страна']
-    correct_df['Корпоративный сайт'] = df['Корпоративный сайт']
-    correct_df['Источник'] = df['Источник']
-    correct_df['Комментарий'] = df['Источник']
+    try:
+        correct_df['Название компании'] = df['Реквизит (Россия): Сокращенное наименование организации']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): ИНН'] = df['Реквизит (Россия): ИНН']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): КПП'] = df['Реквизит (Россия): КПП']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): ОГРН'] = df['Реквизит (Россия): ОГРН']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): ОГРНИП'] = df['Реквизит (Россия): ОГРНИП']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Должность руководителя'] = df['Должность']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Рабочий телефон'] = df['Рабочий телефон']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Рабочий e-mail'] = df['Рабочий e-mail']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): Адрес'] = df['Реквизит (Россия): Адрес']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): Адрес - улица, номер дома'] = df['Реквизит (Россия): Адрес - улица, номер дома']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): Адрес - населенный пункт'] = df['Реквизит (Россия): Адрес - населенный пункт']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): Адрес - район'] = df['Реквизит (Россия): Адрес - район']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): Адрес - регион'] = df['Реквизит (Россия): Адрес - регион']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): Адрес - почтовый индекс'] = df['Реквизит (Россия): Адрес - почтовый индекс']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит (Россия): Адрес - страна'] = df['Реквизит (Россия): Адрес - страна']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Корпоративный сайт'] = df['Корпоративный сайт']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Источник'] = df['Источник']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Комментарий'] = df['Источник']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
     # Надо проверять - если ИНН длинный - то это ИП, иначе Организация
     correct_df['Реквизит: Шаблон'] = 'Организация'
-    correct_df['Реквизит (Россия): Адрес - тип'] = df['Реквизит (Россия): Адрес - тип']
-    correct_df['Реквизит: Название'] = df['Реквизит (Россия): Сокращенное наименование организации']
-    correct_df['Статус ЮЛ'] = df['Статус организации']
-    correct_df['Годовой оборот'] = df['Выручка']
-    correct_df['Основной ОКВЭД'] = df['Основной вид деятельности']
-    correct_df['Дополнительные ОКВЭДы'] = df['Другие виды деятельности'].str.replace(';', ',')
+    try:
+        correct_df['Реквизит (Россия): Адрес - тип'] = df['Реквизит (Россия): Адрес - тип']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Реквизит: Название'] = df['Реквизит (Россия): Сокращенное наименование организации']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Статус ЮЛ'] = df['Статус организации']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Годовой оборот'] = df['Выручка']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Основной ОКВЭД'] = df['Основной вид деятельности']
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Дополнительные ОКВЭДы'] = df['Другие виды деятельности'].str.replace(';', ',')
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
     # Надо запросить сферу деятельности!!!
-    correct_df['Сфера деятельности'] = sfera_
+    try:
+        correct_df['Сфера деятельности'] = sfera_
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
     df['Кол-во сотрудников'] = df['Кол-во сотрудников'].fillna(0)
     try:
         correct_df['Численность работников'] = df['Кол-во сотрудников'].astype(int)
@@ -50,7 +151,11 @@ def convert(sfera_, create_deal):
     except Exception as e:
         print('Ошибка:\n', e)
         print('Ошибка:\n', traceback.format_exc())
-    correct_df['Лицензия'] = df['Полученные лицензии'].str.replace(';', ',')
+    try:
+        correct_df['Лицензия'] = df['Полученные лицензии'].str.replace(';', ',')
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
     correct_df['Дата регистрации компании'] = df['Реквизит (Россия): Дата государственной регистрации']
     #    correct_df['Полученные лицензии'].replace(';', ',', inplace=True)
     if create_deal:
@@ -121,7 +226,7 @@ class Example(QMainWindow):
             s_fname = QFileDialog.getSaveFileName(
                 self,
                 "Сохранить файл",
-                "result.csv",
+                self.sf.currentText() + '.csv',
                 "CSV (*.csv)"
             )
             if s_fname[0]:
@@ -147,14 +252,14 @@ class Example(QMainWindow):
         if fname[0]:
             global df
             try:
-                df = pd.read_csv(fname[0], sep=';', encoding='windows-1251')
+                df = pd.read_csv(fname[0], sep=';', encoding='utf-8')
                 self.btn2.setDisabled(False)
             except Exception as ex:
-#               self.status_label.setText("Ошибка при считывании файла")
+                # self.status_label.setText("Ошибка при считывании файла")
                 print('Ошибка:\n', ex)
                 print('Ошибка:\n', traceback.format_exc())
                 try:
-                    df = pd.read_csv(fname[0], sep=';', encoding='utf-8')
+                    df = pd.read_csv(fname[0], sep=';', encoding='windows-1251')
                     self.btn2.setDisabled(False)
                 except Exception as ex1:
                     self.status_label.setText("Ошибка при считывании файла")
