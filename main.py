@@ -12,7 +12,7 @@ import sys
 df = pd.DataFrame()
 correct_df = pd.DataFrame()
 FILE_NAME = ""
-VERSION = 'Конвертация файла v15032023'
+VERSION = 'Конвертация файла v28052023'
 
 
 def convert(sfera_, create_deal):
@@ -158,12 +158,12 @@ def convert(sfera_, create_deal):
         print('Ошибка:\n', traceback.format_exc())
     correct_df['Дата регистрации компании'] = df['Реквизит (Россия): Дата государственной регистрации']
     #    correct_df['Полученные лицензии'].replace(';', ',', inplace=True)
-    if create_deal:
-        set_create_deal()
+#    if create_deal:
+#        set_create_deal()
 
 
-def set_create_deal():
-    correct_df['Создать сделку по новой воронке'] = 'Да'
+#def set_create_deal():
+#    correct_df['Создать сделку по новой воронке'] = 'Да'
 
 
 class Example(QMainWindow):
@@ -194,10 +194,10 @@ class Example(QMainWindow):
         self.sf.addItems([sphere for sphere in spheres])
         self.generalLayout.addWidget(self.sf)
 
-        self.make_deal = QCheckBox()
-        self.make_deal.setText("Создать сделку в новой воронке?")
+        #self.make_deal = QCheckBox()
+        #self.make_deal.setText("Создать сделку в новой воронке?")
         # self.make_deal.setAlignment(Qt.AlignmentFlag.AlignLeft)
-        self.generalLayout.addWidget(self.make_deal)
+        #self.generalLayout.addWidget(self.make_deal)
 
         self.btn2 = QPushButton(self)
         self.btn2.setText("Обработать файл")
@@ -221,7 +221,7 @@ class Example(QMainWindow):
     def convert_file(self):
         # if self.sfera.text():
         if self.sf.currentIndex():
-            convert(self.sf.currentText(), self.make_deal.isChecked())
+            convert(self.sf.currentText(), False)#self.make_deal.isChecked())
             self.status_label.setText("Файл обработан")
             s_fname = QFileDialog.getSaveFileName(
                 self,
@@ -252,7 +252,10 @@ class Example(QMainWindow):
         if fname[0]:
             global df
             try:
-                df = pd.read_csv(fname[0], sep=';', encoding='utf-8')
+                df = pd.read_csv(fname[0],
+                                 sep=';',
+                                 encoding='utf-8',
+                                 dtype={'Реквизит (Россия): ИНН': str, 'Реквизит (Россия): КПП': str})
                 self.btn2.setDisabled(False)
             except Exception as ex:
                 # self.status_label.setText("Ошибка при считывании файла")
