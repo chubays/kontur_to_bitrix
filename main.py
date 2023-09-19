@@ -12,7 +12,7 @@ import sys
 df = pd.DataFrame()
 correct_df = pd.DataFrame()
 FILE_NAME = ""
-VERSION = 'Конвертация файла v28052023'
+VERSION = 'Конвертация файла v19092023'
 
 
 def convert(sfera_, create_deal):
@@ -144,10 +144,14 @@ def convert(sfera_, create_deal):
     except Exception as e:
         print('Ошибка:\n', e)
         print('Ошибка:\n', traceback.format_exc())
-    df['Кол-во сотрудников'] = df['Кол-во сотрудников'].fillna(0)
     try:
-        correct_df['Численность работников'] = df['Кол-во сотрудников'].astype(int)
-        correct_df['Кол-во сотрудников'] = df['Кол-во сотрудников'].astype(int)
+       df['Количество сотрудников'] = df['Количество сотрудников'].fillna(0)
+    except Exception as e:
+        print('Ошибка:\n', e)
+        print('Ошибка:\n', traceback.format_exc())
+    try:
+        correct_df['Численность работников'] = df['Количество сотрудников'].astype(int)
+        correct_df['Кол-во сотрудников'] = df['Количество сотрудников'].astype(int)
     except Exception as e:
         print('Ошибка:\n', e)
         print('Ошибка:\n', traceback.format_exc())
